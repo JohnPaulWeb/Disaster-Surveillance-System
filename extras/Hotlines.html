@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Disaster Surveillance System • Emergency Hotlines | Philippines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Poppins', Arial, sans-serif;
+            background: #0b1d2a;
+            color: #eef2f5;
+            min-height: 100vh;
+            padding: 32px 24px;
+            position: relative;
+        }
+
+        /* emergency threat pulse background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 60, 56, 0.08), rgba(26, 16, 43, 0.5));
+            pointer-events: none;
+            z-index: -2;
+            animation: slowThreatPulse 6s infinite alternate;
+        }
+
+        @keyframes slowThreatPulse {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.9; }
+        }
+
+        /* main container */
+        .hotlines-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(26, 16, 43, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 140, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 140, 0, 0.1) inset;
+            overflow: hidden;
+            padding: 28px 32px 36px;
+            transition: box-shadow 0.2s;
+        }
+
+        .hotlines-container:hover {
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 140, 0, 0.4) inset;
+        }
+
+        /* header section */
+        .emergency-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .emergency-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #c1121f, #9d0a1a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 1rem;
+            border: 1px solid #ff8c00;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: badgePulse 2s infinite alternate;
+        }
+
+        @keyframes badgePulse {
+            0% { box-shadow: 0 0 0px #ff8c00; }
+            100% { box-shadow: 0 0 12px #ff8c00; }
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #ffcd94);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h1::before {
+            content: "🚨";
+            font-size: 2rem;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #ff8c00;
+        }
+
+        h1::after {
+            content: "📞";
+            font-size: 2rem;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #ff8c00;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bbd4f0;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed rgba(255, 140, 0, 0.4);
+            display: inline-block;
+            width: auto;
+            padding-bottom: 8px;
+        }
+
+        .warning-note {
+            background: rgba(255, 60, 30, 0.15);
+            border-left: 4px solid #ff3c38;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 20px 0 28px;
+            font-size: 0.85rem;
+            color: #ffce9e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(4px);
+        }
+
+        .warning-note strong {
+            color: #ff8c00;
+        }
+
+        /* hotlines grid — two columns for better readability */
+        .hotlines-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* category cards */
+        .category-card {
+            background: rgba(11, 29, 42, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 140, 0, 0.7);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #1a102b, #0f1a2c);
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #ff8c00;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            font-size: 1.8rem;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffcd94;
+            letter-spacing: -0.3px;
+        }
+
+        .category-sub {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-left: auto;
+        }
+
+        .hotline-list {
+            padding: 0.5rem 0;
+        }
+
+        .hotline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 140, 0, 0.15);
+            transition: background 0.15s;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hotline-item:hover {
+            background: rgba(255, 140, 0, 0.1);
+        }
+
+        .hotline-name {
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hotline-name .agency-badge {
+            font-size: 0.7rem;
+            background: rgba(255, 140, 0, 0.2);
+            padding: 2px 8px;
+            border-radius: 30px;
+            color: #ffcd94;
+        }
+
+        .hotline-number {
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: #0a121c;
+            padding: 6px 14px;
+            border-radius: 60px;
+            letter-spacing: 1px;
+            color: #ffcd94;
+            border: 1px solid #ff8c00;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hotline-number:hover {
+            background: #ff8c00;
+            color: #1a102b;
+            transform: scale(1.02);
+            text-decoration: none;
+        }
+
+        /* call button styling */
+        .call-link {
+            text-decoration: none;
+        }
+
+        /* national hotline highlight */
+        .national-highlight {
+            background: rgba(255, 140, 0, 0.15);
+            border-left: 3px solid #ff8c00;
+        }
+
+        .national-highlight .hotline-number {
+            background: #ff8c00;
+            color: #1a102b;
+            font-weight: 900;
+        }
+
+        /* footer / additional info */
+        .footer-info {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 140, 0, 0.3);
+            font-size: 0.75rem;
+            color: #9bb8d4;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .emergency-tip {
+            background: #0b1d2a;
+            border-radius: 60px;
+            padding: 8px 20px;
+            font-size: 0.75rem;
+        }
+
+        /* responsive */
+        @media (max-width: 850px) {
+            body {
+                padding: 20px 16px;
+            }
+            .hotlines-container {
+                padding: 20px;
+            }
+            .hotlines-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .hotline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hotline-number {
+                align-self: flex-start;
+                font-size: 1rem;
+            }
+            .category-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1d2a;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff8c00;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff3c38;
+        }
+
+        ::selection {
+            background: #ff8c00;
+            color: #1a102b;
+        }
+
+        /* small tap-to-call hint */
+        .tap-hint {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hotlines-container">
+    
+    <div class="emergency-header">
+        <div class="emergency-badge">
+            ⚡ 24/7 EMERGENCY RESPONSE
+        </div>
+        <h1>Emergency Hotlines</h1>
+        <div style="text-align: center;">
+            <div class="subtitle">Republic of the Philippines • Nationwide Critical Contacts</div>
+        </div>
+    </div>
+
+    <div class="warning-note">
+        <span style="font-size: 1.4rem;">📢</span>
+        <span><strong>IMMEDIATE ACTION:</strong> Save these numbers. In case of emergency, stay calm and call the nearest hotline. Tap any number to dial directly from your mobile device.</span>
+    </div>
+
+    <!-- Two column hotlines grid -->
+    <div class="hotlines-grid">
+        
+        <!-- NATIONAL EMERGENCY HOTLINES -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon">🇵🇭</div>
+                <div class="category-title">National Emergency</div>
+                <div class="category-sub">Priority</div>
+            </div>
+            <div class="hotline-list">
+                <div class="hotline-item national-highlight">
+                    <div class="hotline-name">
+                        📞 National Emergency Hotline
+                        <span class="agency-badge">911</span>
+                    </div>
+                    <a href="tel:911" class="call-link">
+                        <div class="hotline-number">📱 911</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚒 Philippine National Police (PNP)
+                        <span class="agency-badge">117</span>
+                    </div>
+                    <a href="tel:117" class="call-link">
+                        <div class="hotline-number">📞 117</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚑 Emergency Medical Services
+                    </div>
+                    <a href="tel:911" class="call-link">
+                        <div class="hotline-number">🚨 911</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🔥 Bureau of Fire Protection (BFP)
+                    </div>
+                    <a href="tel:160" class="call-link">
+                        <div class="hotline-number">🔥 160</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISASTER RISK REDUCTION & MANAGEMENT -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon">🌊</div>
+                <div class="category-title">Disaster Response</div>
+                <div class="category-sub">NDRRMC</div>
+            </div>
+            <div class="hotline-list">
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🌀 NDRRMC Trunkline
+                        <span class="agency-badge">National</span>
+                    </div>
+                    <a href="tel:8911406" class="call-link">
+                        <div class="hotline-number">📞 (02) 8911-1406</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        📡 NDRRMC Hotline (emergency)
+                    </div>
+                    <a href="tel:9115064" class="call-link">
+                        <div class="hotline-number">🆘 911-5064</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🎯 DROMIC Report
+                    </div>
+                    <a href="tel:89292861" class="call-link">
+                        <div class="hotline-number">📞 (02) 8929-2861</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEDICAL & HEALTH EMERGENCIES -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon">🏥</div>
+                <div class="category-title">Medical & Health</div>
+                <div class="category-sub">DOH</div>
+            </div>
+            <div class="hotline-list">
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚨 DOH Emergency Hotline
+                    </div>
+                    <a href="tel:1555" class="call-link">
+                        <div class="hotline-number">🩺 1555</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        💊 Poison Control Center
+                    </div>
+                    <a href="tel:85241078" class="call-link">
+                        <div class="hotline-number">☠️ (02) 8524-1078</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🧠 Mental Health Crisis Hotline
+                    </div>
+                    <a href="tel:1553" class="call-link">
+                        <div class="hotline-number">🧠 1553</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🩸 Philippine Red Cross
+                    </div>
+                    <a href="tel:143" class="call-link">
+                        <div class="hotline-number">❤️ 143</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- POLICE & PUBLIC SAFETY -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon">👮</div>
+                <div class="category-title">Police & Safety</div>
+                <div class="category-sub">PNP</div>
+            </div>
+            <div class="hotline-list">
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚔 PNP Text Hotline
+                    </div>
+                    <a href="tel:2920" class="call-link">
+                        <div class="hotline-number">📱 2920</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🛡️ Anti-Crime Emergency
+                    </div>
+                    <a href="tel:136" class="call-link">
+                        <div class="hotline-number">⚠️ 136</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚨 Women & Children Protection
+                    </div>
+                    <a href="tel:85322956" class="call-link">
+                        <div class="hotline-number">👧 (02) 8532-2956</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRAFFIC & ROAD EMERGENCY -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon">🚗</div>
+                <div class="category-title">Traffic & Roadside</div>
+                <div class="category-sub">MMDA / LTO</div>
+            </div>
+            <div class="hotline-list">
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚦 MMDA Emergency
+                    </div>
+                    <a href="tel:136" class="call-link">
+                        <div class="hotline-number">📞 136</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚛 LTO Hotline
+                    </div>
+                    <a href="tel:9229061" class="call-link">
+                        <div class="hotline-number">🚘 922-9061</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚑 Road Emergency (PATROL)
+                    </div>
+                    <a href="tel:3424" class="call-link">
+                        <div class="hotline-number">🛣️ 3424</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- UTILITIES & CRITICAL INFRASTRUCTURE -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon">⚡</div>
+                <div class="category-title">Utilities & Infrastructure</div>
+                <div class="category-sub">Power / Water</div>
+            </div>
+            <div class="hotline-list">
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🔌 Meralco Emergency
+                    </div>
+                    <a href="tel:16211" class="call-link">
+                        <div class="hotline-number">⚡ 16211</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        💧 Manila Water
+                    </div>
+                    <a href="tel:1627" class="call-link">
+                        <div class="hotline-number">💧 1627</div>
+                    </a>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-name">
+                        🚰 Maynilad Emergency
+                    </div>
+                    <a href="tel:1626" class="call-link">
+                        <div class="hotline-number">🚿 1626</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- additional support & mobile tips -->
+    <div class="footer-info">
+        <span>📢 <strong>Globe/TM:</strong> Dial 911 toll-free</span>
+        <span>📢 <strong>Smart/Sun/TNT:</strong> Dial 911</span>
+        <span class="emergency-tip">⚠️ Always keep a backup power bank & emergency kit</span>
+    </div>
+    
+    <div class="warning-note" style="margin-top: 20px; margin-bottom: 0; background: rgba(255,140,0,0.08);">
+        <span>🔔</span>
+        <span><strong>IMPORTANT:</strong> For life-threatening emergencies, always call 911 first. Save these numbers offline. Stay vigilant and safe, Philippines!</span>
+    </div>
+
+    <div class="footer-info" style="margin-top: 1rem; border-top: none; padding-top: 0.5rem;">
+        <span>✅ SAFEPATH • Emergency Directory v1.0</span>
+        <span>🛡️ Disaster Information & Evacuation Management System</span>
+    </div>
+</div>
+
+<!-- small mobile-friendly click to dial fallback -->
+<script>
+    // Ensure all tel links work in a standard way (already using href="tel:...")
+    // Add extra touch for copy-proof but no intrusive behavior
+    (function() {
+        // Add subtle tap animation for call buttons (pure UX)
+        const callBtns = document.querySelectorAll('.hotline-number');
+        callBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Just visual feedback
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        console.log('SAFEPATH Emergency Hotlines Ready — Stay Safe');
+    })();
+</script>
+
+</body>
+</html>

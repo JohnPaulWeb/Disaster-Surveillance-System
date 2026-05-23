@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0b1a;
+    color: #e0e0e0;
+}
+
+/* TOP BAR */
+#upbar {
+    background: linear-gradient(90deg, #1a102b, #0b1d2a);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* USER SECTION */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #ff8c00;
+}
+
+.user-info h2 {
+    font-size: 16px;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* MAIN BOX */
+#box1 {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 500px;
+
+    background: rgba(20, 10, 40, 0.7);
+    backdrop-filter: blur(10px);
+
+    border-radius: 15px;
+    padding: 25px;
+
+    border: 1px solid rgba(255, 140, 0, 0.3);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.1);
+
+    text-align: center;
+}
+
+/* TITLE */
+#box1 h1 {
+    color: #ff4d4d;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* TEXT */
+#box1 p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+/* ALERT STYLE ACCENT */
+#box1::before {
+    content: "⚠ DISASTER READINESS STATUS";
+    display: block;
+    font-size: 12px;
+    color: #ff8c00;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* CARD SYSTEM */
+.card {
+    background: rgba(20, 10, 40, 0.7);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    color:#ff8c00;
+}
+
+/* ALERT CARD */
+.card.alert {
+    border: 1px solid red;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* GRID SECTION */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* SMALL CARDS */
+.card.small {
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid orange;
+}
+
+/* DANGER CARD */
+.card.danger {
+    border: 1px solid orange;
+}
+
+/* WIDE CARD */
+.card.wide {
+    margin-top: 10px;
+    border: 1px solid red;
+}
+
+/* HEADINGS */
+.card h1, .card h2, .card h3 {
+    color: #ff8c00;
+}

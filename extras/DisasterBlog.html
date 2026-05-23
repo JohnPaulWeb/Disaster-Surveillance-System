@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Natural Disasters Blog</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(to bottom, #1a102b, #0b1d2a);
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    header{
+      height: 100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero{
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      color:#ff8c00;
+      text-shadow: 0 0 15px red;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:1.3rem;
+      color:#ddd;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+      padding:60px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2.8rem;
+      color:#ff8c00;
+      margin-bottom:50px;
+      text-shadow:0 0 10px red;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.05);
+      border-left:5px solid red;
+      padding:30px;
+      margin-bottom:40px;
+      border-radius:15px;
+      box-shadow:0 0 20px rgba(0,0,0,0.5);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(255,140,0,0.4);
+    }
+
+    .card h2{
+      color:#ff8c00;
+      margin-bottom:15px;
+      font-size:2rem;
+    }
+
+    .card p{
+      color:#e2e2e2;
+      font-size:1.05rem;
+    }
+
+    .warning{
+      color:#ff4d4d;
+      font-weight:bold;
+    }
+
+    .tips-section{
+      background:#12091f;
+      padding:80px 20px;
+    }
+
+    .tips{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:40px;
+    }
+
+    .tip-box{
+      background:#0f2535;
+      border-top:5px solid #ff8c00;
+      padding:25px;
+      border-radius:15px;
+      transition:0.3s;
+    }
+
+    .tip-box:hover{
+      transform:scale(1.03);
+      box-shadow:0 0 20px rgba(255,0,0,0.5);
+    }
+
+    .tip-box h3{
+      color:#ff8c00;
+      margin-bottom:15px;
+    }
+
+    .tip-box p{
+      color:#ddd;
+    }
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:20px;
+      color:#999;
+      border-top:2px solid red;
+    }
+
+    @media(max-width:768px){
+      .hero h1{
+        font-size:2.7rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>When Nature Decides to Kill</h1>
+      <p>
+        The earth is beautiful... until it turns against us.  
+        In seconds, oceans rise, buildings collapse, forests burn,
+        and entire cities disappear beneath darkness, fire, and chaos.
+      </p>
+    </div>
+  </header>
+
+  <section class="container">
+    <h1 class="section-title">The Most Terrifying Natural Disasters</h1>
+
+    <div class="card">
+      <h2>🌪 Tornadoes</h2>
+      <p>
+        A tornado sounds like a distant scream before it arrives.
+        Then suddenly, roofs vanish, cars fly through the air,
+        and homes explode into splinters. Survivors often describe
+        the sky turning black while the wind sounds like hundreds
+        of jet engines tearing through the earth.
+        <span class="warning">
+          One wrong decision during a tornado can trap you beneath rubble forever.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🌊 Tsunamis</h2>
+      <p>
+        The ocean sometimes retreats before a tsunami strikes.
+        People walk toward the exposed seabed out of curiosity...
+        never realizing death is racing toward them at terrifying speed.
+        Minutes later, walls of water taller than buildings erase entire towns,
+        dragging families, vehicles, and homes into the sea.
+        <span class="warning">
+          If the ocean suddenly pulls back, run immediately. Hesitation kills.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🔥 Wildfires</h2>
+      <p>
+        Wildfires move faster than many people can run.
+        The heat melts metal, destroys forests, and turns neighborhoods into ash.
+        Smoke fills the lungs while the sky glows blood red.
+        Some victims never even see the flames before toxic smoke consumes them.
+        <span class="warning">
+          Waiting too long to evacuate can leave you trapped in a burning nightmare.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🌋 Volcanic Eruptions</h2>
+      <p>
+        Volcanoes do not simply erupt — they unleash hell.
+        Lava swallows roads, ash darkens the sky,
+        and poisonous gases suffocate entire communities.
+        Pyroclastic flows can race downhill faster than cars,
+        incinerating everything in seconds.
+        <span class="warning">
+          You cannot outrun a volcanic blast once it reaches you.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🌍 Earthquakes</h2>
+      <p>
+        Earthquakes strike without warning.
+        One second life feels normal...
+        the next, the ground violently shakes beneath your feet.
+        Buildings collapse like paper, roads split open,
+        and terrified screams echo through clouds of dust.
+        <span class="warning">
+          Most victims never expected the floor itself to become their enemy.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🌧 Floods</h2>
+      <p>
+        Floodwaters may appear calm,
+        but beneath the surface are deadly currents capable of dragging away adults,
+        vehicles, and entire houses.
+        Dirty floodwater also carries disease, sewage, and hidden debris.
+        <span class="warning">
+          Just a small amount of moving water can sweep you away forever.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>❄ Blizzards</h2>
+      <p>
+        Blizzards bury roads, freeze skin within minutes,
+        and isolate families in complete darkness.
+        Many victims die only a few steps from shelter because
+        they become lost in whiteout conditions.
+        <span class="warning">
+          Freezing temperatures silently kill before people realize the danger.
+        </span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Lightning Storms</h2>
+      <p>
+        Lightning is hotter than the surface of the sun.
+        It strikes instantly, stopping hearts and setting structures on fire.
+        Every year, people underestimate storms and pay with their lives.
+        <span class="warning">
+          If you hear thunder, you are already in danger.
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <section class="tips-section">
+    <div class="container">
+      <h1 class="section-title">Emergency Safety Tips That Could Save Your Life</h1>
+
+      <div class="tips">
+
+        <div class="tip-box">
+          <h3>🚨 Prepare an Emergency Kit</h3>
+          <p>
+            Keep water, canned food, flashlights, batteries,
+            medicines, cash, and important documents ready at all times.
+          </p>
+        </div>
+
+        <div class="tip-box">
+          <h3>📻 Stay Alert</h3>
+          <p>
+            Monitor weather alerts and emergency broadcasts.
+            Warnings exist because disasters can escalate in minutes.
+          </p>
+        </div>
+
+        <div class="tip-box">
+          <h3>🏃 Evacuate Immediately</h3>
+          <p>
+            Never ignore evacuation orders.
+            Waiting “just a little longer” has cost countless lives.
+          </p>
+        </div>
+
+        <div class="tip-box">
+          <h3>🏠 Know Safe Zones</h3>
+          <p>
+            Learn where to shelter during earthquakes,
+            tornadoes, floods, and storms before disaster strikes.
+          </p>
+        </div>
+
+        <div class="tip-box">
+          <h3>📱 Keep Phones Charged</h3>
+          <p>
+            During emergencies, communication can mean survival.
+            Always keep backup power banks ready.
+          </p>
+        </div>
+
+        <div class="tip-box">
+          <h3>👨‍👩‍👧 Create a Family Plan</h3>
+          <p>
+            Decide where to meet and how to contact each other
+            if separated during a disaster.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Nature gives no mercy. Preparation may be the only thing standing between life and death.
+    </p>
+  </footer>
+
+</body>
+</html>
