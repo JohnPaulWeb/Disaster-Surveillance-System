@@ -159,21 +159,18 @@ if (isset($_GET["lat"]) && isset($_GET["lon"])) {
 const params = new URLSearchParams(window.location.search);
 
 if (!params.has("lat") || !params.has("lon")) {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                window.location.href = `?lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-            },
-            (error) => {
-                // Fallback to Villasis, Pangasinan if location is blocked
-                window.location.href = `?lat=15.9010&lon=120.5987`;
-            },
-            { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
-        );
-    } else {
-        window.location.href = `?lat=15.9010&lon=120.5987`;
-    }
+
+    navigator.geolocation.getCurrentPosition((position) => {
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        window.location.href =
+            `?lat=${latitude}&lon=${longitude}`;
+    });
+
 }
+
 </script>
 
 </body>
