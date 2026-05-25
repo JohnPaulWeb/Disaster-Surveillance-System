@@ -100,9 +100,44 @@ if (isset($_GET["lat"]) && isset($_GET["lon"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "./Stylesheets/weatherStyle.css">
+    <style>
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(15, 20, 40, 0.85);
+            border-bottom: 1px solid rgba(255, 140, 0, 0.25);
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .nav-bar .back-btn {
+            background: rgba(255, 140, 0, 0.15);
+            border: 1px solid rgba(255, 140, 0, 0.4);
+        }
+        .nav-bar .back-btn:hover { background: rgba(255, 140, 0, 0.3); }
+        .nav-bar .logout-btn {
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+        }
+        .nav-bar .logout-btn:hover { background: rgba(220, 38, 38, 0.3); }
+    </style>
     <title>Weather Monitor</title>
 </head>
 <body>
+<div class="nav-bar">
+    <a href="dashboard.php" class="back-btn">← Back to Dashboard</a>
+    <a href="logout.php" class="logout-btn">🚪 Logout</a>
+</div>
 <div class="container">
 
 <?php if ($error): ?>

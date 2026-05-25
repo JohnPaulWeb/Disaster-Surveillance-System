@@ -231,6 +231,26 @@
             font-size: 16px;
         }
 
+        .logout-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+            box-shadow: 0 6px 16px rgba(220, 38, 38, 0.45);
+            transform: translateY(-1px);
+        }
+
         @media (max-width: 768px) {
             #upbar {
                 flex-direction: column;
@@ -269,6 +289,8 @@
     <div class="status-badge">
        <h2>Disaster Surveillance System</h2>
     </div>
+
+    <a href="logout.php" class="logout-btn">🚪 Logout</a>
 </div>
 
 <div class="container">
@@ -336,4 +358,4 @@
         );
 </script>
 </body>
-</html> 
+</html>
