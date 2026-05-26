@@ -22,6 +22,7 @@
 
     header{
       height: 100vh;
+      padding-top: 60px;
       background:
       linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
       url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1600&auto=format&fit=crop');
@@ -151,10 +152,52 @@
         font-size:2rem;
       }
     }
+
+    /* Fixed top nav bar */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(11, 29, 42, 0.95);
+      border-bottom: 1px solid rgba(255, 140, 0, 0.25);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      box-sizing: border-box;
+    }
+    .nav-bar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .nav-bar .back-btn {
+      background: rgba(255, 140, 0, 0.15);
+      border: 1px solid rgba(255, 140, 0, 0.4);
+    }
+    .nav-bar .back-btn:hover { background: rgba(255, 140, 0, 0.3); }
+    .nav-bar .logout-btn {
+      background: rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(220, 38, 38, 0.4);
+    }
+    .nav-bar .logout-btn:hover { background: rgba(220, 38, 38, 0.3); }
   </style>
 </head>
 
 <body>
+  <div class="nav-bar">
+    <a href="../dashboard.php" class="back-btn">← Back to Dashboard</a>
+    <a href="../logout.php" class="logout-btn">🚪 Logout</a>
+  </div>
+
 
   <header>
     <div class="hero">
