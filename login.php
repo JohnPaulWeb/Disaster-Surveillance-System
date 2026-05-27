@@ -34,6 +34,19 @@
         window.location.href = "dashboard.php";
       });
     }
+
+    function handleGuestLogin() {
+      fetch("save.php", {
+        method: "POST",
+        body: new URLSearchParams({
+          name: "Guest User",
+          email: "guest@example.com",
+          picture: ""
+        })
+      }).then(() => {
+        window.location.href = "dashboard.php";
+      });
+    }
   </script>
 </head>
 
@@ -75,6 +88,13 @@
       ></div>
 
       <div class="g_id_signin"></div>
+      <div class="guest-login-section">
+        <p class="or-divider">or</p>
+        <button class="guest-button" onclick="handleGuestLogin()">
+          <span class="guest-icon">👤</span>
+          <span class="guest-text">Continue as Guest</span>
+        </button>
+      </div>
 
     </div>
 

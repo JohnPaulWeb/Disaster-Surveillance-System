@@ -97,3 +97,78 @@ body {
   opacity: 0.6;
   color: #aabbcc;
 }
+
+/* guest login section */
+.guest-login-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+/* or divider text */
+.or-divider {
+  font-size: 12px;
+  color: #888;
+  margin: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* guest button */
+.guest-button {
+  width: 100%;
+  padding: 12px 15px;
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
+  border: 2px solid #ff8c00;
+  color: #ff8c00;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.guest-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+
+.guest-button:hover {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.2) 0%, rgba(255, 140, 0, 0.1) 100%);
+  box-shadow: 0 0 15px rgba(255, 140, 0, 0.4), inset 0 0 10px rgba(255, 140, 0, 0.1);
+  transform: translateY(-3px);
+  border-color: #ffb033;
+}
+
+.guest-button:hover::before {
+  left: 100%;
+}
+
+.guest-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.3);
+}
+
+.guest-icon {
+  font-size: 18px;
+  display: inline-block;
+}
+
+.guest-text {
+  position: relative;
+  z-index: 1;
+}
